@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% load static %}
+    <!doctype html>
+    <html lang="ko">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>결과 - 시험 생존 확률 계산기</title>
+        <link rel="stylesheet" href="{% static 'fail_app/style.css' %}" />
+      </head>
+      <body>
+        <div class="container">
+          <div class="card result-card {{ result_class }}">
+            <h1>{{ name }}님의 결과</h1>
+            <p class="emoji">{{ emoji }}</p>
+
+            <div class="score-box">
+              <p class="score-title">시험 망함 확률</p>
+              <h2 class="score">{{ score }}%</h2>
+            </div>
+
+            <h3 class="level">{{ level }}</h3>
+            <p class="message">{{ message }}</p>
+
+            <div class="info-box">
+              <p><strong>공부 시간:</strong> {{ study }}시간</p>
+              <p><strong>수면 시간:</strong> {{ sleep }}시간</p>
+              <p><strong>커피:</strong> {{ coffee }}잔</p>
+            </div>
+
+            <a href="{% url 'fail_app:index' %}" class="retry-btn"
+              >다시 계산하기</a
+            >
+          </div>
+        </div>
+      </body>
+    </html>
+  </body>
+</html>
