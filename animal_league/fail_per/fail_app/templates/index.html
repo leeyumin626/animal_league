@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% load static %}
+    <!doctype html>
+    <html lang="ko">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>시험 생존 확률 계산기</title>
+        <link rel="stylesheet" href="{% static 'fail_app/style.css' %}" />
+      </head>
+      <body>
+        <div class="container">
+          <div class="card">
+            <h1>시험 생존 확률 계산기</h1>
+            <p class="subtitle">
+              당신의 현재 상태를 입력하면 시험 망함 확률을 계산해드립니다.
+            </p>
+
+            <form action="{% url 'fail_app:result' %}" method="GET">
+              <div class="form-group">
+                <label for="name">이름</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="이름을 입력하세요"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="study">오늘 공부한 시간</label>
+                <input
+                  type="number"
+                  id="study"
+                  name="study"
+                  min="0"
+                  max="24"
+                  placeholder="예: 3"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="sleep">어제 잔 시간</label>
+                <input
+                  type="number"
+                  id="sleep"
+                  name="sleep"
+                  min="0"
+                  max="24"
+                  placeholder="예: 5"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="coffee">오늘 마신 커피 잔 수</label>
+                <input
+                  type="number"
+                  id="coffee"
+                  name="coffee"
+                  min="0"
+                  max="20"
+                  placeholder="예: 2"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="range_level">시험 범위 체감</label>
+                <select id="range_level" name="range_level">
+                  <option value="low">얼마 안 됨</option>
+                  <option value="medium">적당함</option>
+                  <option value="high">많음</option>
+                  <option value="extreme">미쳤음</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="mindset">현재 멘탈 상태</label>
+                <select id="mindset" name="mindset">
+                  <option value="confident">근자감 max</option>
+                  <option value="normal">해볼만함</option>
+                  <option value="bad">불안함</option>
+                  <option value="cry">울고 싶음</option>
+                </select>
+              </div>
+
+              <button type="submit" class="main-btn">결과 보기</button>
+            </form>
+          </div>
+        </div>
+      </body>
+    </html>
+  </body>
+</html>
